@@ -1,0 +1,15 @@
+.card {
+    width: 100%;
+    height: 47rem;
+
+    display: flex;
+
+    gap: .625rem;
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    margin: auto;
+    
+    border-left: solid .625rem #FFFFFF;
+    border-right: solid .625rem #FFFFFF;
+} 

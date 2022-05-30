@@ -1,0 +1,14 @@
+.descricaoDado {
+    width: 15rem;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font: .8rem 'Roboto', sans-serif;
+    font-weight: 500;
+}
+
+.descricaoDado .dado {
+    color: rgba(0, 0, 0, 0.535);
+}

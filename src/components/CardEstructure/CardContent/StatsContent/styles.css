@@ -1,0 +1,20 @@
+.conteudoStats {
+    height: 9rem;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.paragrafoTituloStats, .paragrafoTituloFraqueza {
+    text-align: left;
+    font: 1.2rem 'Roboto', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.paragrafoStats {
+    margin: 0.3rem 0rem;
+    text-align: justify;
+    font: 1rem 'Roboto', sans-serif;
+    color: #8F8F8F;
+}

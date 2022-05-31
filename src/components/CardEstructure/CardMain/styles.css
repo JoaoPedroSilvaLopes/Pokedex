@@ -1,0 +1,44 @@
+/* ================ MAIN ================ */
+
+.mainContent {
+    width: 23rem;
+    height: 27rem;
+    box-sizing: border-box;
+    padding: 1rem 2rem;
+}
+
+.buttonContent {
+    width: 100%;
+    height: 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 0.5rem;
+}
+
+.internContent {
+    width: 100%;
+    height: 21rem;
+}
+
+/* ========== BOTOES DE ROLAGEM ============ */
+
+.buttonOptions:hover {
+    color: rgba(0, 0, 0, 0.535);
+    font-weight: 700;
+}
+
+.buttonOptions {
+    width: 5rem;
+    height: 1.5rem;
+
+    border-radius: 0.5rem;
+    border: none;
+
+    color: #A2A4A4;
+    background-color: inherit;
+    box-shadow: 0rem 0.125rem 0.25rem 0rem rgba(162, 164, 164, 0.5);
+
+    font: 1rem 'Roboto', sans-serif;
+    font-weight: 500;
+}

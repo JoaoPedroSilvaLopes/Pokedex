@@ -1,0 +1,20 @@
+.textoTipo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.2rem;
+    width: 4.5rem;
+    height: 1.25rem;
+
+    font: 0.6rem 'Roboto', sans-serif;
+    font-weight: 600;
+    border-radius: 0.25rem;
+}
+
+.textoTipo .paragrafoTipo {
+    color: #FFF;
+    font: 0.6rem 'Roboto', sans-serif;
+    font-weight: 700;
+}

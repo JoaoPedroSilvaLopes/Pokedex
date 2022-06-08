@@ -1,7 +1,3 @@
 export function gerarStringTipo(tipo) {
-    if (tipo === undefined) {
-        return ''
-    }
-
-    return tipo.toUpperCase()
+    return tipo === undefined ? '' : tipo.toUpperCase()
 }

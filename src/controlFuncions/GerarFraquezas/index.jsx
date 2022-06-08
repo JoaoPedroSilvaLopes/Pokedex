@@ -1,7 +1,4 @@
-export function gerarFraquezas(tipo) {
-    const tipoPrimario = tipo[0]
-    const tipoSecundario = tipo[1]
-
+const gerarFraquezas = (tipo) => {
     const vetorTipos = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", 
     "steel", "fire", "water", "grass", "electric", 'psychic', "ice", "dragon", "dark", "fairy"];
 
@@ -26,16 +23,17 @@ export function gerarFraquezas(tipo) {
         [1.0, 0.5, 1.0, 2.0, 1.0, 1.0, 0.5, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.5, 1.0]
     ];
 
-    const indexTipoPrimario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipoPrimario})
-    const indexTipoSecundario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipoSecundario})
+    const indexPrimario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipo[0]})
+    const indexSecundario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipo[1]})
 
-    let arrayTipos = []
+    const arrayPrimario = matrizMultiplicadora[indexPrimario]
+    const arraySecundario = matrizMultiplicadora[indexSecundario]
 
-    for (let i = 0; i < matrizMultiplicadora.length; i++) {
-        let multiplicacao
+    const arrayTipos = arrayPrimario.map((fraqueza, index) => {
+        return indexSecundario != -1 ? (fraqueza * arraySecundario[index]) : fraqueza
+    })
 
-        indexTipoSecundario != -1 ? multiplicacao = (matrizMultiplicadora[indexTipoPrimario][i] * matrizMultiplicadora[indexTipoSecundario][i]) : multiplicacao = (matrizMultiplicadora[indexTipoPrimario][i] * 1)
-        arrayTipos.push(multiplicacao)
-    }
     return arrayTipos
 }
+
+export default gerarFraquezas

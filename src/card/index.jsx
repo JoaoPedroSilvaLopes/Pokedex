@@ -1,7 +1,5 @@
 import './styles.css';
 
-//import { useRef } from 'react';
-
 import { CardPokedex } from '../components/CardPokedex';
 import pokedex from '../data/dadosPokedex';
 

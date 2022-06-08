@@ -1,8 +1,4 @@
 export function gerarCores(tipo) {
-    if (tipo === undefined) {
-        return 'transparent'
-    }
-
     const tipos = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", 
     "steel", "fire", "water", "grass", "electric", 'psychic', "ice", "dragon", "dark", "fairy"]
 
@@ -10,5 +6,6 @@ export function gerarCores(tipo) {
     '#B8B8D0', '#F08030', '#6890F0', '#A1C9A8', '#FAE078', '#F85888', '#98D8D8', '#7038F8', '#705848', '#EE99AC']
 
     const indice = tipos.indexOf(tipo, 0)
-    return coresTipos[indice]
+
+    return tipo === undefined ? 'transparent' : coresTipos[indice]
 }

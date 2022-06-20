@@ -18,6 +18,8 @@ import dadosAuxiliares from '../dadosAuxiliares/'
 import gerarFraquezas from '../../controlFuncions/GerarFraquezas'
 import gerarSimbolos from '../../controlFuncions/GerarSimbolos'
 
+import { useEffect, useState } from 'react'
+
 class DadosPokedex {
 	constructor(numeroPokedex, especie, statsBase, tipo, evolucao, descricao) {
 	 	this.numeroPokedex = numeroPokedex
@@ -34,11 +36,18 @@ class DadosPokedex {
 
 const pokedex = []
 
+// const [pokedexEstado, setPokedexEstado] = useState(pokedex)
+
+// useEffect(() => {
+// 	console.log(pokedex)
+//     //setPokedexEstado(pokedex)
+// }, [])
+
 async function coletarDados() {
 	for (let index = 1; index <= 151; index++) {
-		const url = `https://pokeapi.co/api/v2/pokemon/${index}/`
+		const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
 		try {
-			const poke = await axios.get(url)
+			const poke = await axios.get(url);
 			
 			const numeroPokedex = ('000' + poke.data.id).slice(-3)
 			const especie = poke.data.name[0].toUpperCase() + poke.data.name.substring(1)

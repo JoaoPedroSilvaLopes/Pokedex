@@ -3,7 +3,7 @@ import './styles.css'
 import { DataText } from '../../../BasicComponents/DataText'
 import { TypeText } from '../../../BasicComponents/TypeText'
 
-import { gerarCores } from '../../../../controlFuncions/GerarCores'
+import gerarCores from '../../../../controlFuncions/GerarCores'
 
 export function AboutContent({descricao, tipo, simbolos}) {
     return <div className='conteudoAbout'>

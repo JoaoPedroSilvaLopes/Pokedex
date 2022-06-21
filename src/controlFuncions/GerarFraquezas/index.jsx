@@ -23,14 +23,13 @@ const gerarFraquezas = (tipo) => {
         [1.0, 0.5, 1.0, 2.0, 1.0, 1.0, 0.5, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.5, 1.0]
     ];
 
-    const indexPrimario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipo[0]})
-    const indexSecundario = vetorTipos.findIndex(function(vetorTipos) {return vetorTipos == tipo[1]})
+    const indexTipos = tipo.map((tipagem) => {
+        const indexTipagem = vetorTipos.findIndex((vetorTipos) => {return vetorTipos == tipagem})
+        return matrizMultiplicadora[indexTipagem]
+    })
 
-    const arrayPrimario = matrizMultiplicadora[indexPrimario]
-    const arraySecundario = matrizMultiplicadora[indexSecundario]
-
-    const arrayTipos = arrayPrimario.map((fraqueza, index) => {
-        return indexSecundario != -1 ? (fraqueza * arraySecundario[index]) : fraqueza
+    const arrayTipos = indexTipos[0].map((fraqueza, index) => {
+        return indexTipos[1] !== undefined ? (fraqueza * indexTipos[1][index]) : fraqueza
     })
 
     return arrayTipos

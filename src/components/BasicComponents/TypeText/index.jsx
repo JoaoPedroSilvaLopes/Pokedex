@@ -1,7 +1,7 @@
 import './styles.css'
 
-import { gerarCores } from '../../../controlFuncions/GerarCores'
-import { gerarStringTipo } from '../../../controlFuncions/GerarStringTipo'
+import gerarCores from '../../../controlFuncions/GerarCores'
+import gerarStringTipo from '../../../controlFuncions/GerarStringTipo'
 
 import { Image } from '../Image'
 

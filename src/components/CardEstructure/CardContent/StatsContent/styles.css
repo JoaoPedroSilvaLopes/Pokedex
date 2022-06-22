@@ -18,3 +18,21 @@
     font: 1rem 'Roboto', sans-serif;
     color: #8F8F8F;
 }
+
+.teste {
+    height: 100px;
+    border: 1px solid blue;
+    display: flex;
+
+    gap: .625rem;
+
+    width: 100%;
+    flex-direction: row;
+    overflow-x: auto;
+}
+
+.teste1 {
+    width: 6rem;
+    background-color: red;
+    display: inline;
+}

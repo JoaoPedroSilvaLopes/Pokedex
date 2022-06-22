@@ -1,6 +1,6 @@
 import './styles.css';
 
-import { gerarCores } from '../../../controlFuncions/GerarCores'
+import gerarCores from '../../../controlFuncions/GerarCores'
 import { Image } from '../../BasicComponents/Image'
 
 export function CardHeader({numeroPokedex, simbolos, sprites, tipo, especie}) {

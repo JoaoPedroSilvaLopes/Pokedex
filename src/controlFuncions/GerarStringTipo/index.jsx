@@ -1,3 +1,5 @@
-export function gerarStringTipo(tipo) {
+const gerarStringTipo = (tipo) => {
     return tipo === undefined ? '' : tipo.toUpperCase()
 }
+
+export default gerarStringTipo

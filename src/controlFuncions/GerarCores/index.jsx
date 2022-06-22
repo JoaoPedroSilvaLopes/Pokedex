@@ -1,4 +1,4 @@
-export function gerarCores(tipo) {
+const gerarCores = (tipo) => {
     const tipos = ["normal", "fighting", "flying", "poison", "ground", "rock", "bug", "ghost", 
     "steel", "fire", "water", "grass", "electric", 'psychic', "ice", "dragon", "dark", "fairy"]
 
@@ -9,3 +9,5 @@ export function gerarCores(tipo) {
 
     return tipo === undefined ? 'transparent' : coresTipos[indice]
 }
+
+export default gerarCores

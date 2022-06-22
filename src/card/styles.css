@@ -6,7 +6,7 @@
 
     gap: .625rem;
 
-    overflow-x: hidden;
+    overflow-x: auto;
     scroll-behavior: smooth;
     margin: auto;
     

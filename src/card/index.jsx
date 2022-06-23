@@ -12,36 +12,51 @@ export function Card() {
     const [pokedex, setPokedex] = useState([])
     const ref = useRef(null)
 
+    //const url1 = 'https://pokeapi.co/api/v2/evolution-chain/1/'
+    //const url2 = 'https://pokeapi.co/api/v2/evolution-trigger/2/'
+
     useEffect(() => {
         async function buscarPokemon() {
             const pokedex = []
             const dadosPokemons = []
 
-            for (let index = 1; index <= 1; index++) {
+            for (let index = 1; index <= 7; index++) {
                 const pokedexData = await axios.get(`https://pokeapi.co/api/v2/generation/${index}/`)
                 dadosPokemons.push(pokedexData.data.pokemon_species)
             }
 
+            //const evolucao = await axios.get(url1)
+            //console.log(evolucao)
+            //const motivoEvolucao = await axios.get(url2)
+            //console.log(motivoEvolucao)
+
             const dataAllPokemons = dadosPokemons.reduce((list, sub) => list.concat(sub), [])
 
+            console.log(dataAllPokemons)
+
             for (let index = 0; index <= dataAllPokemons.length - 1; index++) {
+                let tipos
+
                 const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 1}/`)
 
-                const sprites = [poke.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"].front_default, poke.data.sprites.versions["generation-vi"]["omegaruby-alphasapphire"].front_shiny]
                 const numeroPokedex = ('000' + poke.data.id).slice(-3)
                 const especie = poke.data.name[0].toUpperCase() + poke.data.name.substring(1)
 
-                const stats = [poke.data.stats[0].base_stat, poke.data.stats[1].base_stat, poke.data.stats[2].base_stat, 
+                const sprites = 
+                [poke.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"].front_default, 
+                poke.data.sprites.versions["generation-vii"]["ultra-sun-ultra-moon"].front_shiny]
+
+                const stats = 
+                [poke.data.stats[0].base_stat, poke.data.stats[1].base_stat, poke.data.stats[2].base_stat, 
                 poke.data.stats[3].base_stat, poke.data.stats[4].base_stat, poke.data.stats[5].base_stat]
-                    
-                let tipos
                     
                 poke.data.types[1] === undefined ? tipos = [poke.data.types[0].type.name] : tipos = [poke.data.types[0].type.name, poke.data.types[1].type.name]
 
-                //console.log(poke)
+                console.log(poke)
                 //console.log(sprites, numeroPokedex, especie, stats, tipos)
 
-                pokedex[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos, dadosAuxiliares[index + 1][0], dadosAuxiliares[index + 1][1])
+                //pokedex[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos, dadosAuxiliares[index + 1][0], dadosAuxiliares[index + 1][1])
+                pokedex[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos)
             }
             setPokedex(pokedex)
         }

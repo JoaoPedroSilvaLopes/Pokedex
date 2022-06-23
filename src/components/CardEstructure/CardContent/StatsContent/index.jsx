@@ -1,8 +1,9 @@
 import './styles.css'
 
-import { Image } from '../../../BasicComponents/Image'
 import gerarCores from '../../../../controlFuncions/GerarCores'
-import gerarSimbolos from '../../../../controlFuncions/GerarSimbolos';
+import DataStats from '../../../BasicComponents/DataStats';
+import Weakness from '../../../BasicComponents/Weakness';
+
 
 export function StatsContent({statsBase, tipo, fraquezas}) {
 
@@ -12,21 +13,18 @@ export function StatsContent({statsBase, tipo, fraquezas}) {
     return <div className='conteudoInterno'>
         <p className='paragrafoTituloStats' style={{color: gerarCores(tipo[0])}}>Base stats</p>
         <div className='conteudoStats'>
-            <p className='paragrafoStats'>HP -------- {statsBase[0]}</p>
-            <p className='paragrafoStats'>Attack ---- {statsBase[1]}</p>
-            <p className='paragrafoStats'>Defense --- {statsBase[2]}</p>
-            <p className='paragrafoStats'>Sp. Atk --- {statsBase[3]}</p>
-            <p className='paragrafoStats'>Sp. Def --- {statsBase[4]}</p>
-            <p className='paragrafoStats'>Speed ----- {statsBase[5]}</p>
+            <DataStats textStat="HP" stat={statsBase[0]}/>
+            <DataStats textStat="Attack" stat={statsBase[1]}/>
+            <DataStats textStat="Defense" stat={statsBase[2]}/>
+            <DataStats textStat="Sp. Atk" stat={statsBase[3]}/>
+            <DataStats textStat="Sp. Def" stat={statsBase[4]}/>
+            <DataStats textStat="Speed " stat={statsBase[5]}/>
         </div>
-        <p className='paragrafoTituloFraqueza' style={{color: gerarCores(tipo[0])}}>Fraqueza</p>
-        <div className='teste'>
+        <p className='paragrafoTituloFraqueza' style={{color: gerarCores(tipo[0])}}>Weakness</p>
+        <div className='fraquezas'>
             {fraquezas.map((fraqueza, index) => {
                 return (
-                    <div className='teste1'>
-                        <Image caminho={gerarSimbolos([vetorTipos[index]])} width='100%' height='auto'/>
-                        <p>{fraqueza}</p>
-                    </div>
+                    <Weakness key={index} simbolo={[vetorTipos[index]]} fraqueza={fraqueza}/>
                 )
             })}
         </div>

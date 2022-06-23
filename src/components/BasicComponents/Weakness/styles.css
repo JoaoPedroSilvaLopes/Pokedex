@@ -1,0 +1,7 @@
+.fraquezaTipo {
+    width: 20rem;
+    height: 2.5rem;
+    border:1px solid red;
+    display: inline;
+    font-size: 0.75rem;
+}

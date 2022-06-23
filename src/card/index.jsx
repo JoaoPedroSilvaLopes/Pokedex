@@ -8,34 +8,23 @@ import axios from "axios";
 import { useEffect, useState, useRef } from 'react';
 
 export function Card() {
-
+    const [intervalo, setIntervalo] = useState([0, 4])
     const [pokedex, setPokedex] = useState([])
     const ref = useRef(null)
 
-    //const url1 = 'https://pokeapi.co/api/v2/evolution-chain/1/'
-    //const url2 = 'https://pokeapi.co/api/v2/evolution-trigger/2/'
+    let previousIndex = intervalo[0]
+    let finalIndex = intervalo[1]
+    let pokedexLoop = []
 
     useEffect(() => {
         async function buscarPokemon() {
-            const pokedex = []
-            const dadosPokemons = []
+            for (let index = intervalo[0]; index <= intervalo[1]; index++) {
+                if (index > 808) {
+                    return
+                }
 
-            for (let index = 1; index <= 7; index++) {
-                const pokedexData = await axios.get(`https://pokeapi.co/api/v2/generation/${index}/`)
-                dadosPokemons.push(pokedexData.data.pokemon_species)
-            }
-
-            //const evolucao = await axios.get(url1)
-            //console.log(evolucao)
-            //const motivoEvolucao = await axios.get(url2)
-            //console.log(motivoEvolucao)
-
-            const dataAllPokemons = dadosPokemons.reduce((list, sub) => list.concat(sub), [])
-
-            console.log(dataAllPokemons)
-
-            for (let index = 0; index <= dataAllPokemons.length - 1; index++) {
                 let tipos
+                let ability
 
                 const poke = await axios.get(`https://pokeapi.co/api/v2/pokemon/${index + 1}/`)
 
@@ -52,29 +41,44 @@ export function Card() {
                     
                 poke.data.types[1] === undefined ? tipos = [poke.data.types[0].type.name] : tipos = [poke.data.types[0].type.name, poke.data.types[1].type.name]
 
-                console.log(poke)
-                //console.log(sprites, numeroPokedex, especie, stats, tipos)
+                poke.data.abilities[1] === undefined ? 
+                ability = [poke.data.abilities[0].ability.name[0].toUpperCase() + poke.data.abilities[0].ability.name.substring(1), "-------"] 
+                : 
+                ability = [poke.data.abilities[0].ability.name[0].toUpperCase() + poke.data.abilities[0].ability.name.substring(1), poke.data.abilities[1].ability.name[0].toUpperCase() + poke.data.abilities[1].ability.name.substring(1)]
 
-                //pokedex[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos, dadosAuxiliares[index + 1][0], dadosAuxiliares[index + 1][1])
-                pokedex[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos)
+                const height = poke.data.height
+                const weight = poke.data.weight
+
+                // ======================DESCRIÇÃO======================
+                const poke1 = await axios.get(poke.data.species.url)
+                //console.log(poke1)
+                const array = poke1.data.flavor_text_entries
+                //console.log(array.length)
+                const descricao = poke1.data.flavor_text_entries[array.length - 3].flavor_text
+                //======================================================
+
+                pokedexLoop[index] = new DadosPokedex(numeroPokedex, sprites, especie, stats, tipos, height, weight, ability, descricao, undefined)
             }
-            setPokedex(pokedex)
+            setPokedex(pokedex.concat(pokedexLoop))
         }
         buscarPokemon()
-    }, [])
+    }, [intervalo])
 
     const handleLeftClick = (e) => {
         e.preventDefault()
-        // capturar o tamanho do card e decrementar seu tamanho
-        //console.log(ref.current.offsetWidth)
         ref.current.scrollLeft -= ref.current.offsetWidth
     }
 
     const handleRightClick = (e) => {
         e.preventDefault()
-        // capturar o tamanho do card e acrescentar seu tamanho
-        //console.log(ref.current.offsetWidth)
         ref.current.scrollLeft += ref.current.offsetWidth
+        addPokedex()
+    }
+
+    const addPokedex = () => {
+        previousIndex = finalIndex + 1
+        finalIndex = finalIndex + 5
+        return setIntervalo([previousIndex, finalIndex])
     }
 
     return (
@@ -85,16 +89,20 @@ export function Card() {
             <div className="card" ref={ref}>{
                 pokedex.map(pokemon => (
                     <CardPokedex 
-                    key={pokemon.numeroPokedex}
-                    numeroPokedex={pokemon.numeroPokedex} 
-                    simbolos={pokemon.simbolos} 
-                    sprites={pokemon.sprites}
-                    tipo={pokemon.tipo}
-                    especie={pokemon.especie}
-                    descricao={pokemon.descricao}
-                    statsBase={pokemon.statsBase}
-                    evolucao={pokemon.evolucao}
-                    fraquezas={pokemon.fraquezas}
+                        key={pokemon.numeroPokedex}
+                        numeroPokedex={pokemon.numeroPokedex} 
+                        sprites={pokemon.sprites}
+                        especie={pokemon.especie}
+                        tipo={pokemon.tipo}
+                        statsBase={pokemon.statsBase}
+                        height={pokemon.height}
+                        weight={pokemon.weight}
+                        ability={pokemon.ability}
+
+                        descricao={pokemon.descricao}
+                        evolucao={pokemon.evolucao}
+                        simbolos={pokemon.simbolos} 
+                        fraquezas={pokemon.fraquezas}
                     />
                 ))
                 }

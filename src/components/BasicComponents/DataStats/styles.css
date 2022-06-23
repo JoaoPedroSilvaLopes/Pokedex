@@ -1,0 +1,13 @@
+.containerStats {
+    width: calc(100% - 0.5rem);
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin: 0.3rem 0rem;
+    text-align: justify;
+    font: 1rem 'Roboto', sans-serif;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.750);
+}

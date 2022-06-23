@@ -13,13 +13,17 @@ import gerarFraquezas from '../../controlFuncions/GerarFraquezas'
 import gerarSimbolos from '../../controlFuncions/GerarSimbolos'
 
 class DadosPokedex {
-	constructor(numeroPokedex, sprites, especie, statsBase, tipo, evolucao, descricao) {
+	constructor(numeroPokedex, sprites, especie, statsBase, tipo, height, weight, ability, descricao, evolucao) {
 	 	this.numeroPokedex = numeroPokedex
 		this.sprites = sprites
+		this.especie = especie
 		this.tipo = tipo
-	 	this.especie = especie
-		this.descricao = descricao
 		this.statsBase = statsBase
+		this.height = height
+		this.weight = weight
+		this.ability = ability
+
+		this.descricao = descricao
 		this.evolucao = evolucao
 		this.simbolos = gerarSimbolos(tipo)
 		this.fraquezas = gerarFraquezas(tipo)

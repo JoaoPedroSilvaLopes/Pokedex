@@ -12,27 +12,14 @@
     margin-bottom: 0.5rem;
 }
 
-.paragrafoStats {
-    margin: 0.3rem 0rem;
-    text-align: justify;
-    font: 1rem 'Roboto', sans-serif;
-    color: #8F8F8F;
-}
-
-.teste {
+.fraquezas {
     height: 100px;
-    border: 1px solid blue;
     display: flex;
 
     gap: .625rem;
 
     width: 100%;
-    flex-direction: row;
-    overflow-x: auto;
-}
+    /* //flex-direction: row; */
 
-.teste1 {
-    width: 6rem;
-    background-color: red;
-    display: inline;
+    /* overflow: auto; */
 }

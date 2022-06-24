@@ -21,7 +21,7 @@ export function StatsContent({statsBase, tipo, fraquezas}) {
             <DataStats textStat="Speed " stat={statsBase[5]}/>
         </div>
         <p className='paragrafoTituloFraqueza' style={{color: gerarCores(tipo[0])}}>Weakness</p>
-        <div className='fraquezas'>
+        <div className="fraquezas">
             {fraquezas.map((fraqueza, index) => {
                 return (
                     <Weakness key={index} simbolo={[vetorTipos[index]]} fraqueza={fraqueza}/>

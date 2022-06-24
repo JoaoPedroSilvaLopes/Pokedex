@@ -13,13 +13,13 @@
 }
 
 .fraquezas {
-    height: 100px;
-    display: flex;
-
-    gap: .625rem;
-
     width: 100%;
-    /* //flex-direction: row; */
-
-    /* overflow: auto; */
+    height: 6rem;
+    gap: .15rem;
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }

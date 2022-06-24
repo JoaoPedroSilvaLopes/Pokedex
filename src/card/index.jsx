@@ -49,7 +49,7 @@ export function Card() {
                 const height = poke.data.height
                 const weight = poke.data.weight
 
-                // ======================DESCRIÇÃO======================
+                //=======================DESCRIÇÃO======================
                 const poke1 = await axios.get(poke.data.species.url)
                 //console.log(poke1)
                 const array = poke1.data.flavor_text_entries

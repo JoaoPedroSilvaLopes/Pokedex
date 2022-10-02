@@ -2,7 +2,6 @@ import './styles.css';
 
 import { CardPokedex } from '../components/CardPokedex';
 import DadosPokedex from '../data/dadosPokedex';
-import dadosAuxiliares from '../data/dadosAuxiliares';
 
 import axios from "axios";
 import { useEffect, useState, useRef } from 'react';
@@ -48,6 +47,7 @@ export function Card() {
 
                 const height = poke.data.height
                 const weight = poke.data.weight
+                console.log(sprites)
 
                 //=======================DESCRIÇÃO======================
                 const poke1 = await axios.get(poke.data.species.url)

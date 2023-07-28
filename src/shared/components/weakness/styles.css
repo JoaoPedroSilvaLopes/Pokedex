@@ -1,0 +1,16 @@
+.weaknessInfo {
+  width: 2rem;
+  height: auto;
+  display: inline-block;
+}
+
+.weaknessSymbol {
+  width: 100%;
+  height: auto;
+}
+
+.weaknessText {
+  font: 0.8rem "Roboto", sans-serif;
+  font-weight: 400;
+  color: "#333333";
+}

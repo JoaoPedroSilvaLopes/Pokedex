@@ -1,0 +1,17 @@
+.dataInfo {
+  width: calc(100% - 0.5rem);
+  height: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  font: 1rem "Roboto", sans-serif;
+  font-weight: 400;
+  color: #333333;
+  margin-bottom: 0.25rem;
+}
+
+.dataText {
+  color: #6c6c6c;
+  font-weight: 600;
+} 

@@ -1,0 +1,57 @@
+.containerStats {
+  width: calc(100% - 0.5rem);
+  height: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 0.3rem 0rem;
+  text-align: justify;
+  font: 1rem "Roboto", sans-serif;
+  font-weight: 400;
+  color: "#333333";
+}
+
+.statText {
+  color: #6c6c6c;
+  top: 0.125rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  position: absolute;
+  z-index: 2;
+}
+
+.progressBar {
+  background-color: #d7d7d7;
+  border-radius: 2.5rem;
+  height: 1.5rem;
+  width: 9rem;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 2.5rem;
+
+  -webkit-mask: linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0);
+}
+
+.progress::before {
+  border-radius: 2.5rem;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 0, 1) 0%,
+    rgba(0, 255, 0, 1) 100%
+  );
+}

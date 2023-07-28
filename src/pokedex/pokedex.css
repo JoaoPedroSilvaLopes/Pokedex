@@ -1,0 +1,16 @@
+.card {
+  width: 100%;
+  height: 46rem;
+  padding: 0rem 0.625rem;
+
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  margin: auto;
+
+  border-left: solid 0.625rem #ffffff;
+  border-right: solid 0.625rem #ffffff;
+}

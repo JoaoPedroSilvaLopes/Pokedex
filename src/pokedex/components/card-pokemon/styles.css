@@ -1,0 +1,12 @@
+.paginaPokedex {
+  display: flex;
+  flex-direction: column;
+
+  height: 45rem;
+  gap: 0.25rem;
+
+  background-color: #ffffff;
+  border-radius: 2.5rem;
+
+  box-shadow: 0.1rem 0.125rem 0.25rem 0px rgba(162, 164, 164, 0.5);
+}

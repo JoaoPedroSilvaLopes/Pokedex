@@ -1,7 +1,6 @@
 import { typeSymbol, typesWeakeness } from "../../utils";
 
-export const PokemonResponseToPokemonData = (pokemonResponse) => {
-  console.log(pokemonResponse.data);
+export const PokemonResponseToPokemonData = (pokemonResponse, description) => {
   const {
     id,
     name,
@@ -11,10 +10,9 @@ export const PokemonResponseToPokemonData = (pokemonResponse) => {
     abilities,
     height,
     weight,
-    species,
   } = pokemonResponse.data;
 
-  const numeroPokedex = ("000" + id).slice(-3);
+  const numeroPokedex = ("0000" + id).slice(-4);
   const especie = name[0].toUpperCase() + name.substring(1);
 
   const spritesData =
@@ -40,7 +38,7 @@ export const PokemonResponseToPokemonData = (pokemonResponse) => {
     height: height,
     weight: weight,
     ability: abilitiesData,
-    descricao: "arrayDescription[0]",
+    descricao: description,
     evolucao: undefined,
 
     simbolos: typeSymbol(typesData),

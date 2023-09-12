@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ContentAbout, ContentEvolution, ContentStatus } from "./content-types";
+import { ContentAbout, ContentStatus } from "./content-types";
 
 import "./styles.css";
 
@@ -52,7 +52,7 @@ const CardContent = ({
   };
 
   return (
-    <main className="mainContent">
+    <div className="mainContent">
       <div className="buttonContent">
         <button className="buttonOptions" onClick={() => setAbout()}>
           About
@@ -60,12 +60,9 @@ const CardContent = ({
         <button className="buttonOptions" onClick={() => setStats()}>
           Stats
         </button>
-        <button className="buttonOptions" onClick={() => setEvolution()}>
-          Evolution
-        </button>
       </div>
       <div className="internContent">{internContent}</div>
-    </main>
+    </div>
   );
 };
 

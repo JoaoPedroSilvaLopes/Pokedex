@@ -1,5 +1,3 @@
-/* ================ MAIN ================ */
-
 .mainContent {
   width: 23rem;
   height: 27rem;
@@ -11,7 +9,8 @@
   width: 100%;
   height: 2rem;
   display: flex;
-  justify-content: space-between;
+  gap: 1rem;
+  /* justify-content: space-between; */
 
   margin-bottom: 0.5rem;
 }
@@ -20,8 +19,6 @@
   width: 100%;
   height: 21rem;
 }
-
-/* ========== BOTOES DE ROLAGEM ============ */
 
 .buttonOptions:hover {
   color: rgba(0, 0, 0, 0.535);

@@ -1,63 +1,53 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { CardPokemon } from "./components";
-import useFetch from "../shared/hooks/useFetch";
+import useFetchPokemon from "../shared/hooks/useFetchPokemon";
 
 import "./pokedex.css";
 
 const Pokedex = () => {
-  const pokedex = useFetch()
+  const [pokedex, setPokedex] = useState([]);
+  const [pagination, setPagination] = useState(0);
+  const [height, setHeight] = useState(0);
+
+  const limit = 20;
   const ref = useRef(null);
+  const url = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=${pagination}`;
 
-  console.log(pokedex)
-  
-  const handleLeftClick = (e) => {
-    e.preventDefault();
-    ref.current.scrollLeft -= ref.current.offsetWidth;
-  };
+  useFetchPokemon(url, pokedex, setPokedex);
 
-  const handleRightClick = (e) => {
-    e.preventDefault();
-    ref.current.scrollLeft += ref.current.offsetWidth;
+  const handleScroll = () => {
+    const scrollHeight = ref.current.scrollHeight - ref.current.offsetHeight;
+    const percent = ref.current.scrollTop / scrollHeight;
+
+    if (percent > 0.75 && height !== scrollHeight) {
+      setPagination(pagination + 20);
+      setHeight(scrollHeight);
+    }
   };
 
   return (
-    <>
-      <button className="botao" onClick={handleLeftClick}>
-        <img
-          src="../../pictures/general/setaEsquerda.png"
-          width="70%"
-          height="auto"
-          alt="Scroll Left"
-        />
-      </button>
-      <div className="card" ref={ref}>
-        {pokedex.map((pokemon) => (
-          <CardPokemon
-            key={pokemon.numeroPokedex}
-            numeroPokedex={pokemon.numeroPokedex}
-            sprites={pokemon.sprites}
-            especie={pokemon.especie}
-            tipo={pokemon.tipo}
-            statsBase={pokemon.statsBase}
-            height={pokemon.height}
-            weight={pokemon.weight}
-            ability={pokemon.ability}
-            descricao={pokemon.descricao}
-            evolucao={pokemon.evolucao}
-            simbolos={pokemon.simbolos}
-            fraquezas={pokemon.fraquezas}
-          />
-        ))}
+    <div className="content">
+      <div className="card" ref={ref} onScroll={() => handleScroll()}>
+        {pokedex.length > 0 &&
+          pokedex.map((pokemon) => (
+            <CardPokemon
+              key={pokemon.numeroPokedex}
+              numeroPokedex={pokemon.numeroPokedex}
+              sprites={pokemon.sprites}
+              especie={pokemon.especie}
+              tipo={pokemon.tipo}
+              statsBase={pokemon.statsBase}
+              height={pokemon.height}
+              weight={pokemon.weight}
+              ability={pokemon.ability}
+              descricao={pokemon.descricao}
+              evolucao={pokemon.evolucao}
+              simbolos={pokemon.simbolos}
+              fraquezas={pokemon.fraquezas}
+            />
+          ))}
       </div>
-      <button className="botao" onClick={handleRightClick}>
-        <img
-          src="../../pictures/general/setaDireita.png"
-          width="70%"
-          height="auto"
-          alt="Scroll Right"
-        />
-      </button>
-    </>
+    </div>
   );
 };
 

@@ -1,10 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getPokemonData, getPokemonUrl } from "../services";
 
-const useFetch = () => {
-  const urlPaginate = `https://pokeapi.co/api/v2/pokemon/?limit=9&offset=0`;
-  const [pokedex, setPokedex] = useState([]);
-
+const useFetchPokemon = (urlPaginate, pokemon, setPokedex) => {
   useEffect(() => {
     const getDataPokemons = async () => {
       const pokemonsUrl = await getPokemonUrl(urlPaginate);
@@ -12,13 +9,11 @@ const useFetch = () => {
         return await getPokemonData(data.url);
       });
 
-      const pokemonsData = await Promise.all(pokemonPromises)
-      setPokedex(pokemonsData)
+      const pokemonsData = await Promise.all(pokemonPromises);
+      setPokedex(pokemon.concat(pokemonsData));
     };
     getDataPokemons();
-  }, []);
-
-  return pokedex;
+  }, [urlPaginate]);
 };
 
-export default useFetch;
+export default useFetchPokemon;

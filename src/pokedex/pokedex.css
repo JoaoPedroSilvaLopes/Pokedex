@@ -1,16 +1,20 @@
-.card {
-  width: 100%;
-  height: 46rem;
-  padding: 0rem 0.625rem;
-
+.content {
   display: flex;
-  align-items: center;
-  gap: 0.625rem;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0rem 5rem;
+  width: 100%;
+  height: 50rem;
+}
 
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  margin: auto;
-
-  border-left: solid 0.625rem #ffffff;
-  border-right: solid 0.625rem #ffffff;
+.card {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  justify-content: center;
+  padding: 0.625rem;
+  gap: 1rem;
 }

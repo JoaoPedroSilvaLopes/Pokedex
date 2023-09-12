@@ -11,57 +11,66 @@ const ContentStatus = ({ statsBase, tipo, fraquezas }) => {
       </p>
       <div className="statsContent">
         {statsBase.map((stat, index) => (
-          <Status textStat={stat.name} stat={stat.value} />
+          <Status key={index} textStat={stat.name} stat={stat.value} />
         ))}
       </div>
       <p className="title" style={{ color: typeColor(tipo[0]) }}>
         Normal Damage
       </p>
       <div className="weaknessContent">
-        {fraquezas.map((fraqueza, index) => {
-          return (
-            fraqueza === 1.0 && (
-              <Weakness
-                key={index}
-                typeName={[typeNames[index]]}
-                weaknessRatio={fraqueza}
-              />
-            )
-          );
-        })}
+        {fraquezas.includes(1.0) ? (
+          fraquezas.map((fraqueza, index) => {
+            return (
+              fraqueza === 1.0 && (
+                <Weakness
+                  key={index}
+                  typeName={[typeNames[index]]}
+                  weaknessRatio={fraqueza}
+                />
+              )
+            );
+          })
+        ) : (
+          <div className="nullText">N/DA</div>
+        )}
       </div>
       <p className="title" style={{ color: typeColor(tipo[0]) }}>
         Resistance
       </p>
       <div className="weaknessContent">
-        {fraquezas.map((fraqueza, index) => {
-          return (
-            fraqueza < 1.0 &&
-            fraqueza > 0.0 && (
+        {fraquezas.filter((value) => value > 0.0 && value < 1.0).length > 0 ? (
+          fraquezas.map((fraqueza, index) => {
+            return fraqueza > 0.0 && fraqueza < 1.0 && (
               <Weakness
                 key={index}
                 typeName={[typeNames[index]]}
                 weaknessRatio={fraqueza}
               />
-            )
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className="nullText">N/DA</div>
+        )}
       </div>
       <p className="title" style={{ color: typeColor(tipo[0]) }}>
         Weakness
       </p>
       <div className="weaknessContent">
-        {fraquezas.map((fraqueza, index) => {
-          return (
-            fraqueza > 1.0 && (
-              <Weakness
-                key={index}
-                typeName={[typeNames[index]]}
-                weaknessRatio={fraqueza}
-              />
-            )
-          );
-        })}
+        {fraquezas.filter((value) => value > 1.0).length > 0 ? (
+          fraquezas.map((fraqueza, index) => {
+            return (
+              fraqueza > 1.0 && (
+                <Weakness
+                  key={index}
+                  typeName={[typeNames[index]]}
+                  weaknessRatio={fraqueza}
+                />
+              )
+            );
+          })
+        ) : (
+          <div className="nullText">N/DA</div>
+        )}
       </div>
       <p className="title" style={{ color: typeColor(tipo[0]) }}>
         Immunity

@@ -12,7 +12,10 @@ const ContentAbout = ({
   ability,
 }) => {
   return (
-    <div className="conteudoAbout">
+    <div className="container">
+      <p className="title" style={{ color: typeColor(tipo[0]) }}>
+        Description
+      </p>
       <p
         className="pokedexDescription"
         style={{ backgroundColor: typeColor(tipo[0]) }}
@@ -22,6 +25,7 @@ const ContentAbout = ({
       <div className="pokedexTypes">
         {tipo.map((value, index) => (
           <TextTypeInfo
+            key={index}
             tipo={value}
             simbolos={simbolos[index]}
             width={"20%"}
@@ -29,16 +33,15 @@ const ContentAbout = ({
           />
         ))}
       </div>
-      <p
-        className="title"
-        style={{ color: typeColor(tipo[0]) }}
-      >
+      <p className="title" style={{ color: typeColor(tipo[0]) }}>
         Data Pokédex
       </p>
-      <TextInfo descricaoDado={"Height"} dado={`${height / 10} m`} />
-      <TextInfo descricaoDado={"Weight"} dado={`${weight / 10} Kg`} />
-      <TextInfo descricaoDado={"Ability"} dado={ability[0]} />
-      <TextInfo descricaoDado={"Hidden Ability"} dado={ability[1]} />
+      <div>
+        <TextInfo descricaoDado={"Height"} dado={`${height / 10} m`} />
+        <TextInfo descricaoDado={"Weight"} dado={`${weight / 10} Kg`} />
+        <TextInfo descricaoDado={"Ability"} dado={ability[0]} />
+        <TextInfo descricaoDado={"Hidden Ability"} dado={ability[1] ?? 'N/DA'} />
+      </div>
     </div>
   );
 };
